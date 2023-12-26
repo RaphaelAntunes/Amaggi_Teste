@@ -26,8 +26,8 @@ Painel Admin > Store > Configuration. Nas abas procure pela coluna ANTUNES > TES
 
 
 # Habilitando e Desabilitando o modulo
-Habilitar Modulo: bin/magento module:enable Antunes_teste && bin/magento setup:upgrade
-Desabilitar Modulo: bin/magento module:disable Antunes_teste && bin/magento setup:upgrade
+- Habilitar Modulo: bin/magento module:enable Antunes_teste && bin/magento setup:upgrade
+- Desabilitar Modulo: bin/magento module:disable Antunes_teste && bin/magento setup:upgrade
 
 
 OBS: O Modulo só funciona se houver um produto selecionado.
