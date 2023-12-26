@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="Antunes" translate="label" sortOrder="100">
+			<label>
+				Antunes
+			</label>
+		</tab>
+		<section id="teste" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+			<label>
+				Teste
+			</label>
+			<tab>
+				Antunes
+			</tab>
+			<resource>
+				Antunes_Teste::Teste_config
+			</resource>
+			<group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>
+					Geral
+				</label>
+				<field id="selected_product" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>
+						Selecione um Produto
+					</label>
+					<source_model>
+						Antunes\teste\Model\Config\Source\ProductList
+					</source_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>
