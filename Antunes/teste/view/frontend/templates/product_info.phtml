@@ -5,24 +5,24 @@ $scopeConfig = $objectManager->get('Magento\Framework\App\Config\ScopeConfigInte
 $productRepository = $objectManager->get('Magento\Catalog\Model\ProductRepository');
 $stockRegistry = $objectManager->get('Magento\CatalogInventory\Api\StockRegistryInterface');
 
-// Substitua 'teste/general/selected_product' pelo caminho real que você está usando
+// Path do caminho para encontrar valor do produto
 $configPath = 'teste/general/selected_product';
 
-// Obter o ID do produto a partir da configuração
+// Obtem o ID do produto a partir da configuração
 $productID = $scopeConfig->getValue($configPath, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
-// Obter informações do produto com base no ID
+// Obtem informações do produto com base no ID
 $product = $productRepository->getById($productID);
 
-// Obter a URL do produto
+// Obtem a URL do produto
 $productUrl = $product->getProductUrl();
 
-// Obter a URL da imagem do produto
+// Obtem a URL da imagem do produto
 $imageUrl = $objectManager->get('Magento\Catalog\Helper\Image')
     ->init($product, 'product_page_image_medium')
     ->getUrl();
 
-// Obter informações sobre o estoque do produto
+// Obtem informações sobre o estoque do produto
 $stockItem = $stockRegistry->getStockItem($product->getId());
 
 ?>
@@ -33,95 +33,6 @@ $stockItem = $stockRegistry->getStockItem($product->getId());
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .product-card {
-            background-color: #f2f2f2;
-            justify-content: space-around;
-            display: flex;
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin: 15px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .product-image {
-
-            border-radius: 15px;
-            max-width: 100%;
-            height: auto;
-            width: 400px;
-            transition: 0.5s;
-
-        }
-
-        .product-image:hover {
-            transition: 0.5s;
-            width: 600px;
-        }
-
-        /* Adicionar estilos para o contêiner pai, se necessário */
-        .content-main {
-            width: 100%;
-            max-width: 1000px;
-            /* Por exemplo, defina a largura máxima do contêiner pai */
-            margin: 0 auto;
-            /* Centraliza o contêiner pai na página, se desejar */
-        }
-
-        .card-left {
-            margin-left: 25px !important;
-            margin: 0px;
-            width: 100%;
-            align-items: start;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-
-        }
-
-        .card-left h3 {
-            text-transform: uppercase;
-            color: black;
-            font-size: 40px;
-            font-weight: 300;
-            text-align: start;
-
-        }
-
-        .card-left p {
-            color: #616161;
-            text-align: start;
-            font-size: 20px;
-        }
-
-        .card-button {
-            width: 100%;
-            display: flex;
-        }
-
-        .card-button button {
-            color: white;
-            background-color: #006BB4;
-            width: 50%;
-            height: 60px;
-            transition: 0.5s;
-        }
-
-        .card-button button:hover {
-            color: #006BB4;
-            background-color: white;
-            transition: 0.5s;
-            border: solid 1px #006BB4;
-        }
-
-        a:link{
-            text-decoration: none;
-        }
-    </style>
-    <title>Product Card</title>
-
-    <!-- Adicione a biblioteca jQuery (se ainda não estiver incluída no seu projeto) -->
 </head>
 
 <body>
@@ -156,5 +67,90 @@ $stockItem = $stockRegistry->getStockItem($product->getId());
 
 
 </body>
+
+
+<style>
+    .product-card {
+        background-color: #f2f2f2;
+        justify-content: space-around;
+        display: flex;
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin: 15px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .product-image {
+
+        border-radius: 15px;
+        max-width: 100%;
+        height: auto;
+        width: 400px;
+        transition: 0.5s;
+
+    }
+
+    .product-image:hover {
+        transition: 0.5s;
+        width: 600px;
+    }
+
+    .content-main {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .card-left {
+        margin-left: 25px !important;
+        margin: 0px;
+        width: 100%;
+        align-items: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+    }
+
+    .card-left h3 {
+        text-transform: uppercase;
+        color: black;
+        font-size: 40px;
+        font-weight: 300;
+        text-align: start;
+
+    }
+
+    .card-left p {
+        color: #616161;
+        text-align: start;
+        font-size: 20px;
+    }
+
+    .card-button {
+        width: 100%;
+        display: flex;
+    }
+
+    .card-button button {
+        color: white;
+        background-color: #006BB4;
+        width: 50%;
+        height: 60px;
+        transition: 0.5s;
+    }
+
+    .card-button button:hover {
+        color: #006BB4;
+        background-color: white;
+        transition: 0.5s;
+        border: solid 1px #006BB4;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+</style>
 
 </html>

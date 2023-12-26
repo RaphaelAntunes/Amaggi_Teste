@@ -4,7 +4,7 @@ define(['jquery', 'uiComponent', 'ko'], function ($, Component, ko) {
     return Component.extend({
 
         updateStock: function () {
-            var stockEndpoint = '/rest/V1/test/publicendpoint'; // Substitua pelo endpoint correto
+            var stockEndpoint = '/rest/V1/test/publicendpoint';
             $.ajax({
                 url: stockEndpoint,
                 type: 'GET',
