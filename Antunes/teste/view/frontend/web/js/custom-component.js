@@ -2,7 +2,16 @@ define(['jquery', 'uiComponent', 'ko'], function ($, Component, ko) {
     'use strict';
     
     return Component.extend({
-
+        defaults: {
+            template: 'Antunes_teste/knockout-test'
+        },
+        initialize: function () {
+            this.customerName = ko.observableArray([]);
+            this.customerData = ko.observable('');
+            this._super();
+            
+            setInterval(this.updateStock.bind(this), 1000);
+        },
         updateStock: function () {
             var stockEndpoint = '/rest/V1/test/publicendpoint';
             $.ajax({
